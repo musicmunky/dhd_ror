@@ -1,3 +1,3 @@
-class PostMeta < ActiveRecord::Base
+class PostMetum < ActiveRecord::Base
 	belongs_to :post
 end
