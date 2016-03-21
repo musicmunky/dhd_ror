@@ -1,14 +1,46 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>DhdRor</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+		<title>DOGHOUSE | ##COMICTITLE##</title>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
 
-<%= yield %>
+		<%= javascript_include_tag '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', :async => true %>
 
-</body>
+		<%= render partial: "shared/analyticstracking" %>
+
+		<!-- BEGIN JAVASCRIPT FOR TWITTER FOLLOW POPUP DIV -->
+		<%= javascript_tag do %>
+			function showDiv(){document.getElementById('popup-follow').style.display = 'block';}
+		<% end %>
+		<%= javascript_tag do %>
+			window.addEventListener("mouseup", function(event){
+				var box = document.getElementById('twitter-button');
+				var box2 = document.getElementById('popup-follow');
+				if (event.target != box){box2.style.display = 'none';}
+			});
+		<% end %>
+		<!-- END JAVASCRIPT FOR TWITTER FOLLOW POPUP DIV -->
+
+		<!-- BEGIN SOCIAL MEDIA SHARING BUTTONS -->
+		<!-- ADDTHIS BUTTONS -->
+		<%= javascript_include_tag '//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5209d6d50eb2bafe&domready=1' %>
+
+		<!-- TWITTER FOLLOW BUTTON -->	
+		<%= javascript_tag do %>
+			!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+		<% end %>
+		<!-- END SOCIAL MEDIA SHARING BUTTONS -->
+
+		<!-- FACEBOOK OPEN GRAPH META PROPERTIES -->
+		<meta property="og:image" content="<%= 'http://thedoghousediaries.com/' . trim($html['content']['name']) %>" />
+
+	</head>
+	<body>
+
+		<%= render partial: "shared/header" %>
+		<%= yield %>
+
+	</body>
 </html>

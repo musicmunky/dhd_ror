@@ -12,10 +12,10 @@
  *
  * require_tree .
  * require_self
- *= require jquery-ui-1.10.4.custom
- *= require myservice
+ * require jquery-ui-1.10.4.custom
+ *= require dhd
  *= require fusionlib
- *= require jquery.dataTables.min
- *= require jquery.editable-select
- *= require bootstrap.min
+ * require jquery.dataTables.min
+ * require jquery.editable-select
+ * require bootstrap.min
  */

@@ -1,1 +1,47 @@
-foobar
+
+<div id="maincontent" class="comic">
+<!--
+	<?php //if ($announce['content']['active'] == 1): ?>
+		<div id="announcements">
+			<div id="announcediv" class="textfields">
+				<?php //echo $announce['content']['text']; ?>
+			</div>
+		</div>
+	<?php //endif; ?>
+-->
+	<div id="topNav">
+<!--		<?php //echo isset($html['content']['navbuttons']) ? $html['content']['navbuttons'] : ""; ?>//-->
+	</div>
+	<div id="imgdiv" style="text-align:center; margin-bottom:0px;">
+<!--		<?php //echo isset($html['content']['comic']) ? $html['content']['comic'] : ""; ?>//-->
+	</div>
+	<div id="bottomNav">
+<!--		<?php //echo isset($html['content']['navbuttons']) ? $html['content']['navbuttons'] : ""; ?>//-->
+	</div>
+</div>
+
+<div id="signoff-wrapper">
+	<div id="title-signoff-share">
+<!--
+		<h2 id="titleheader">
+			<?php //echo $html['content']['title']; ?>
+		</h2>
+		<div id="subtext">
+			<?php //echo $html['content']['subtxt']; ?>
+		</div>
+		<div id="alttxt" class="mobile-only">
+			<?php //echo "Alt-Text: " . $html['content']['alttext']; ?>
+		</div>
+		<div id="permalink">
+			<?php //echo $html['content']['permlnk']; ?>
+		</div>
+		<div class="addthis_native_toolbox" data-url="<?php //echo 'http://thedoghousediaries.com/' . $html['content']['comid']; ?>" data-title="<?php //echo $html['content']['title']; ?>">
+		</div>
+//-->
+		<div class="clear"></div>
+	</div>
+</div>
+<%= render partial: "shared/socialmedia" %>
+<%= render partial: "shared/other" %>
+<%= render partial: "shared/bottomad" %>
+<%= render partial: "shared/footer" %>

@@ -42,7 +42,7 @@ body {
 #logo {
 	max-width: 100%;
 	height: auto;
-	opacity: .9;	
+	opacity: .9;
 }
 #menu {
 	width: 220px;
@@ -94,10 +94,10 @@ a.menuLinks:hover {
 	height: auto;
 	border-radius: 1px;
 }
-.fb-tw-rss-icon:hover {	
+.fb-tw-rss-icon:hover {
 	opacity: .8;
 }
-ul {					
+ul {
 	padding: 0px;
 	margin: 0px;
 	width: 100%;
@@ -162,7 +162,7 @@ a.comicnavlinks:hover {
 #topNav {
 	height: 32px;
 	width: 100%;
-	padding: 20px 0px;	
+	padding: 20px 0px;
 }
 @media only screen and (max-device-width: 480px) {
 #topNav {
@@ -172,7 +172,7 @@ a.comicnavlinks:hover {
 #bottomNav {
 	height: 32px;
 	width: 100%;
-	padding: 20px 0px;		
+	padding: 20px 0px;
 }
 @media only screen and (max-device-width: 480px) {
 #bottomNav {
@@ -235,8 +235,8 @@ a.comicnavlinks:hover {
 	text-decoration: underline;
 	color: #0000EE;
 }
-#subtext > a:visited { 
-	color: #551A8B; 
+#subtext > a:visited {
+	color: #551A8B;
 }
 #alttext {
 	width: 600px;
@@ -263,7 +263,7 @@ a.comicnavlinks:hover {
 	color: #424242;
 	opacity: .7;
 }
-#permalink > a:visited { 
+#permalink > a:visited {
 	color: #424242;
 	opacity: .7;
 }
@@ -301,7 +301,7 @@ a.comicnavlinks:hover {
 #follow {
 	width: 625px;
 	height: auto;
-	margin: auto; 
+	margin: auto;
 	padding: 40px 0px;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
@@ -321,12 +321,12 @@ a.comicnavlinks:hover {
 }
 #forekast-button {
 	height: 50px;
-	background: #3e4252;	
+	background: #3e4252;
 	border-radius: 5px;
 	float: left;
 }
 #forekast-button:hover {
-	opacity: .9;	
+	opacity: .9;
 }
 #forekast-logo-white {
 	width: auto;
@@ -481,7 +481,7 @@ a.comicnavlinks:hover {
 .loginbtn:hover{
 	opacity: .8;
 }
-.logintxt{	
+.logintxt{
 	border: medium none;
 	color: #5F5F5F;
 	font-family: Arial,Helvetica,sans-serif;
@@ -491,7 +491,7 @@ a.comicnavlinks:hover {
 	width: 170px;
 }
 input:focus {
-	outline: none; 
+	outline: none;
 }
 
 td {
@@ -561,8 +561,8 @@ span {
 	text-decoration: underline;
 	color: #0000EE;
 }
-#maincontent.aboutUs a:visited { 
-	color: #551A8B; 
+#maincontent.aboutUs a:visited {
+	color: #551A8B;
 }
 /*************************/
 /* END ABOUT US PAGE CSS */
@@ -599,7 +599,7 @@ span {
     right: 5px;
     width: 64px;
     height: 64px;
-    background-image: url('../logos/up.png');
+    background-image: url('assets/up.png');
     background-repeat: no-repeat;
     opacity: 0.4;
     filter: alpha(opacity=40); /* For IE8 and earlier */
@@ -637,8 +637,8 @@ span {
 	text-decoration: underline;
 	color: #0000EE;
 }
-.contact-list a:visited { 
-	color: #551A8B; 
+.contact-list a:visited {
+	color: #551A8B;
 }
 .contact-list a:hover {
 	text-decoration: underline;
