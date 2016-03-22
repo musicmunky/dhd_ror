@@ -7,6 +7,16 @@ class PagesController < ApplicationController
 		end
 	end
 
+	def archive
+	end
 
+	def about
+	end
+
+	def contact
+	end
+
+	def store
+	end
 
 end
