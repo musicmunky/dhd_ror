@@ -1,10 +1,27 @@
 Rails.application.routes.draw do
 
-	devise_for :users, :controllers => { registrations: 'registrations' }
 	root 'pages#index'
+
+	devise_for :users, :controllers => { registrations: 'registrations' }
 	resources :announcements
 	resources :post_meta
 	resources :posts
+
+	get '/:id', to: 'pages#index', constraints: { id: /\d+/ }
+
+	get 'about', to: 'pages#about', as: :about
+	get 'pages/about'
+
+	get 'contact', to: 'pages#contact', as: :contact
+	get 'pages/contact'
+
+	get 'archive', to: 'pages#archive', as: :archive
+	get 'pages/archive'
+
+	get 'store', to: 'pages#store', as: :store
+	get 'pages/store'
+
+
 	# The priority is based upon order of creation: first created -> highest priority.
 	# See how all your routes lay out with "rake routes".
 

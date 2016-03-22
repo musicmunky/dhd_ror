@@ -13,11 +13,12 @@
 // require jquery
 // require jquery_ujs
 //= require jquery-1.12.1.min
+//= require jquery.scrollToTop
 // require jquery-ui-1.10.4.custom
 //= require jquery.turbolinks
 // require jquery.editable-select
 // require moment.min
-// require fusionlib
+//= require fusionlib
 // require bootstrap.min
 // require list.min
 // require jquery.dataTables.min

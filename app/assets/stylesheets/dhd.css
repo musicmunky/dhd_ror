@@ -599,7 +599,7 @@ span {
     right: 5px;
     width: 64px;
     height: 64px;
-    background-image: url('assets/up.png');
+    background-image: url('../assets/up.png');
     background-repeat: no-repeat;
     opacity: 0.4;
     filter: alpha(opacity=40); /* For IE8 and earlier */

@@ -13,3 +13,6 @@
 /tmp
 
 config/database.yml
+DataOnly.sql
+StructureAndData.sql
+dbexports/
