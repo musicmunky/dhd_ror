@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 	resources :post_meta
 	resources :posts
 
-	get '/:id', to: 'pages#index', constraints: { id: /\d+/ }
+	get '/:id', to: 'pages#index', constraints: { id: /(\?p=)?(\d+)/ }
 
 	get 'about', to: 'pages#about', as: :about
 	get 'pages/about'

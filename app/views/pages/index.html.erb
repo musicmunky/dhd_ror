@@ -23,19 +23,23 @@
 	<div id="title-signoff-share">
 
 		<h2 id="titleheader">
-<!--			<?php //echo $html['content']['title']; ?>  -->
+			<%= @comic.title.html_safe %>
+<!--		<?php //echo $html['content']['title']; ?>  -->
 		</h2>
 		<div id="subtext">
-<!--			<?php //echo $html['content']['subtxt']; ?> -->
+			<%= @comic.content.html_safe %>
+<!--		<?php //echo $html['content']['subtxt']; ?> -->
 		</div>
 		<div id="alttxt" class="mobile-only">
-<!--			<?php //echo "Alt-Text: " . $html['content']['alttext']; ?> -->
+			<%= @comic.title.html_safe %>
+<!--		<?php //echo "Alt-Text: " . $html['content']['alttext']; ?> -->
 		</div>
 		<div id="permalink">
-<!--			<?php //echo $html['content']['permlnk']; ?> -->
+			Permalink: <a target="_blank" href='<%= "#{root_url}#{@comic.id}" %>'><%= "#{root_url}#{@comic.id}" %></a>
+<!--		<?php //echo $html['content']['permlnk']; ?> -->
 		</div>
 <!--		<div class="addthis_native_toolbox" data-url="<?php //echo 'http://thedoghousediaries.com/' . $html['content']['comid']; ?>" data-title="<?php //echo $html['content']['title']; ?>"></div>//-->
-		<div class="addthis_native_toolbox" data-url="<%= 'http://thedoghousediaries.com/' %>" data-title="<%= 'comic title goes here' %>"></div>
+		<div class="addthis_native_toolbox" data-url='<%= "#{root_url}#{@comic.id}" %>' data-title="<%= @comic.title.html_safe %>"></div>
 		<div class="clear"></div>
 	</div>
 </div>

@@ -2,8 +2,12 @@ class PagesController < ApplicationController
 
 	def index
 #		render :layout => "comics"
+		@comic = {}
 		if params[:id]
-			#puts "\n\n\n\n\n\n\n\n\n\nID IS: #{params[:id]}\n\n\n\n\n\n\n\n\n\n"
+			@id = params[:id].gsub('?p=', '')
+			@comic = Post.find(@id)
+		else
+			@comic = Post.get_latest
 		end
 	end
 
