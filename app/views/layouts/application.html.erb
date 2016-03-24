@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>DOGHOUSE | ##COMICTITLE##</title>
+		<title><%= content_for?(:title) ? content_for(:title) : "DOGHOUSE" %></title>
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
 		<%= favicon_link_tag %>
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>

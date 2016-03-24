@@ -5,6 +5,11 @@ class PagesController < ApplicationController
 		@comic = {}
 		if params[:id]
 			@id = params[:id].gsub('?p=', '')
+#			logger.debug "\n\n\n\n\n\n\nID IS: #{@id}\n\n\n\n\n\n\n"
+			@comic = Post.find(@id)
+		elsif params[:p]
+			@id = params[:p].gsub('?p=', '')
+#			logger.debug "\n\n\n\n\n\n\nID IS: #{@id}\n\n\n\n\n\n\n"
 			@comic = Post.find(@id)
 		else
 			@comic = Post.get_latest

@@ -6,6 +6,25 @@
 
 <a href="#top" id="toTop"></a>
 <div id="maincontent" class="archiveTable">
+	<% lnks = [] %>
+	<% tbls = [] %>
+	<% yrs = Post.get_post_years %>
+	<% yrs.each do |yr| %>
+		<% lnks.push("<a style='outline:none;margin-left:10px;margin-right:10px;display:inline-block;' href='##{yr}'>#{yr}</a>") %>
+		<% tbls.push("<div id='#{yr}'><span style='font-size:16px;font-weight:bold;color:#78C8C8;'>#{yr}</span></div><table>") %>
+		<% cmcs = Post.get_comics_by_year(yr) %>
+		<% cmcs.each do |cmc| %>
+			<% tmp = [] %>
+			<% tmp.push("<tr style='text-align:left;'><td>" + cmc['created_at'].strftime("%B #{cmc['created_at'].day.ordinalize}")) %>
+			<% tmp.push("</td><td><a title='Permanent Link to " + cmc['title'] + "' href='" + cmc['guid']) %>
+			<% tmp.push("' target='_blank'>" + cmc['title'] + "</a></td></tr>") %>
+			<% htmlstr = tmp.join("") %>
+			<% tbls.push(htmlstr) %>
+		<% end %>
+		<% tbls.push("</table>") %>
+	<% end %>
+
 	<h1 class="pageTitle">Archive</h1>
-<!-- <?php //echo $html['content']; ?> -->
+	<div style='text-align:center;width:100%;padding-top:20px;'><%= lnks.join(" - ").html_safe %></div>
+	<%= tbls.join("").html_safe %>
 </div>

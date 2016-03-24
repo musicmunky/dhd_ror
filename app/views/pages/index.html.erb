@@ -1,44 +1,73 @@
+<%- title "DOGHOUSE | #{@comic.title.html_safe}" %>
+
 <div id="maincontent" class="comic">
-<!--
-	<?php //if ($announce['content']['active'] == 1): ?>
+
+	<% annc = Announcement.where(active: true) %>
+	<% if annc.size > 0 %>
 		<div id="announcements">
 			<div id="announcediv" class="textfields">
-				<?php //echo $announce['content']['text']; ?>
+				<%= annc[0].content.html_safe %>
 			</div>
 		</div>
-	<?php //endif; ?>
--->
+	<% end %>
+
+	<% frst = Post.get_first %>
+	<% prev = Post.get_previous(@comic.id) %>
+	<% rand = Post.get_random %>
+	<% gnxt = Post.get_next(@comic.id) %>
+	<% last = Post.get_latest %>
+	<% meta = @comic.get_post_meta %>
+	<meta property="og:image" content='<%= "#{root_url}#{meta['comic_file']}" %>' />
+
 	<div id="topNav">
-<!--		<?php //echo isset($html['content']['navbuttons']) ? $html['content']['navbuttons'] : ""; ?>//-->
+		<ul>
+			<li>
+				<a id='firstlink' href='<%= "#{root_url}#{frst.id}" %>' class='comicnavlinks' title='<%= frst.title.html_safe %>'>&#60;&#60;</a>
+			</li>
+			<li>
+				<a id='previouslink' href='<%= "#{root_url}#{prev.id}" %>' class='comicnavlinks' title='<%= prev.title.html_safe %>'>&#60;</a>
+			</li>
+			<li>
+				<a id='randomlink' href='<%= "#{root_url}#{rand.id}" %>' class='comicnavlinks' title='<%= rand.title.html_safe %>'>&#63;</a>
+			</li>
+			<li>
+				<a id='nextlink' href='<%= "#{root_url}#{gnxt.id}" %>' class='comicnavlinks' title='<%= gnxt.title.html_safe %>'>&#62;</a>
+			</li>
+			<li>
+				<a id='latestlink' href='<%= "#{root_url}#{last.id}" %>' class='comicnavlinks' title='<%= last.title.html_safe %>'>&#62;&#62;</a>
+			</li>
+		</ul>
 	</div>
 	<div id="imgdiv" style="text-align:center; margin-bottom:0px;">
-<!--		<?php //echo isset($html['content']['comic']) ? $html['content']['comic'] : ""; ?>//-->
+		<img src='<%= image_path("dhdcomics/#{meta['comic_file']}") %>' title="<%= meta['comic_description'].html_safe %>">
 	</div>
 	<div id="bottomNav">
-<!--		<?php //echo isset($html['content']['navbuttons']) ? $html['content']['navbuttons'] : ""; ?>//-->
+		<ul><li>
+				<a id='firstlink' href='<%= "#{root_url}#{frst.id}" %>' class='comicnavlinks' title='<%= frst.title.html_safe %>'>&#60;&#60;</a>
+			</li>
+			<li>
+				<a id='previouslink' href='<%= "#{root_url}#{prev.id}" %>' class='comicnavlinks' title='<%= prev.title.html_safe %>'>&#60;</a>
+			</li>
+			<li>
+				<a id='randomlink' href='<%= "#{root_url}#{rand.id}" %>' class='comicnavlinks' title='<%= rand.title.html_safe %>'>&#63;</a>
+			</li>
+			<li>
+				<a id='nextlink' href='<%= "#{root_url}#{gnxt.id}" %>' class='comicnavlinks' title='<%= gnxt.title.html_safe %>'>&#62;</a>
+			</li>
+			<li>
+				<a id='latestlink' href='<%= "#{root_url}#{last.id}" %>' class='comicnavlinks' title='<%= last.title.html_safe %>'>&#62;&#62;</a>
+			</li></ul>
 	</div>
 </div>
 
 <div id="signoff-wrapper">
 	<div id="title-signoff-share">
-
-		<h2 id="titleheader">
-			<%= @comic.title.html_safe %>
-<!--		<?php //echo $html['content']['title']; ?>  -->
-		</h2>
-		<div id="subtext">
-			<%= @comic.content.html_safe %>
-<!--		<?php //echo $html['content']['subtxt']; ?> -->
-		</div>
-		<div id="alttxt" class="mobile-only">
-			<%= @comic.title.html_safe %>
-<!--		<?php //echo "Alt-Text: " . $html['content']['alttext']; ?> -->
-		</div>
+		<h2 id="titleheader"><%= @comic.title.html_safe %></h2>
+		<div id="subtext"><%= @comic.content.html_safe %></div>
+		<div id="alttxt" class="mobile-only"><%= meta['comic_description'].html_safe %></div>
 		<div id="permalink">
 			Permalink: <a target="_blank" href='<%= "#{root_url}#{@comic.id}" %>'><%= "#{root_url}#{@comic.id}" %></a>
-<!--		<?php //echo $html['content']['permlnk']; ?> -->
 		</div>
-<!--		<div class="addthis_native_toolbox" data-url="<?php //echo 'http://thedoghousediaries.com/' . $html['content']['comid']; ?>" data-title="<?php //echo $html['content']['title']; ?>"></div>//-->
 		<div class="addthis_native_toolbox" data-url='<%= "#{root_url}#{@comic.id}" %>' data-title="<%= @comic.title.html_safe %>"></div>
 		<div class="clear"></div>
 	</div>

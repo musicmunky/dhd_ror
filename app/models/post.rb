@@ -47,16 +47,40 @@ class Post < ActiveRecord::Base
 
 
 	def self.get_random
-		Post.limit(1).order("RAND()")
+		Post.limit(1).order("RAND()").first
 	end
 
-	def get_post_meta
 
-=begin
-	Problem IDs:
-	51,65,70,84,91,108,117,123,129,148,156,163,167,171,174,180,183,
-	186,204,212,215,231,235,240,244,249,252,255,269,278,307,407
-=end
+	def self.get_post_years
+		@conn = ActiveRecord::Base.connection
+		@result = @conn.exec_query("SELECT DISTINCT LEFT(created_at, 4) AS yr FROM posts ORDER BY yr DESC;")
+		@years = []
+		if @result.length > 0
+			@result.each do |r|
+				@years.push(r['yr'])
+			end
+		end
+		return @years
+	end
+
+
+	def self.get_comics_by_year(y)
+		@year = y
+		@conn = ActiveRecord::Base.connection
+		@comics = []
+		@result = @conn.exec_query("SELECT id, created_at, title, guid FROM posts
+									WHERE created_at like '#{@year}%'
+										AND name != '' ORDER BY created_at DESC;")
+		if @result.length > 0
+			@result.each do |r|
+				@comics.push(r)
+			end
+		end
+		return @comics
+	end
+
+
+	def get_post_meta
 
 		comicmeta = {}
 		@metakeys = PostMetum.uniq.pluck(:meta_key)

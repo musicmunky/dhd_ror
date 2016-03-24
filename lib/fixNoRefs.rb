@@ -31,8 +31,3 @@ problem_array.each do |parr|
 	puts "INSERTED: #{lsstr} FOR COMIC ID: #{parr[0]}"
 end
 
-
-
-
-
-
