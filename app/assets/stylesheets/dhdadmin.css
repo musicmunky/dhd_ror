@@ -593,7 +593,7 @@ p {
 
 /* #mainwrapper div img:first-of-type {display:none;} */
 
-.navbar-brand {padding-left:120px !important; margin-right: 50px !important; width:300px !important; height:100px !important; line-height:100px !important;}
+.navbar-brand {padding-left:120px !important; margin-right: 50px !important; width:240px !important; height:100px !important; line-height:100px !important;}
 .navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand img {display:none;}
 
 .navbar, .navbar-header, .container-fluid, .navbar-right, {min-height:100px !important;}

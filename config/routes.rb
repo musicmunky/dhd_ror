@@ -9,6 +9,12 @@ Rails.application.routes.draw do
 
 	get '/:id', to: 'pages#index', constraints: { id: /(\?p=)?(\d+)/ }
 
+	get 'dhdadmin', to: 'pages#dhdadmin', as: :dhdadmin
+	get 'pages/dhdadmin'
+
+	get 'users', to: 'pages#users', as: :users
+	get 'pages/users'
+
 	get 'about', to: 'pages#about', as: :about
 	get 'pages/about'
 
