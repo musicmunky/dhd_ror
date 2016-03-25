@@ -81,7 +81,6 @@ class Post < ActiveRecord::Base
 
 
 	def get_post_meta
-
 		comicmeta = {}
 		@metakeys = PostMetum.uniq.pluck(:meta_key)
 		@metakeys.each do |mk|
