@@ -1,6 +1,4 @@
 <% content_for :admin do %>
-<p id="notice"><%= notice %></p>
-
 <h3>
 	All Comics
 	<%# if user_signed_in? and current_user.has_role? :admin %>
@@ -47,8 +45,4 @@
 		<% end %>
 	</tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
 <% end %>

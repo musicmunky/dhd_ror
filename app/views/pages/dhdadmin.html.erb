@@ -1,6 +1,13 @@
 <% content_for :admin do %>
 
-	foo
-
+<div class="jumbotron">
+	<h1>DHD Administrators</h1>
+	<p>What would you like to do?</p>
+	<p><a class="btn btn-primary btn-lg" style="margin-right:20px;" href="<%= new_post_path %>" role="button">Add a New Comic</a>
+		<a class="btn btn-success btn-lg" style="margin-right:20px;" href="<%= announcements_path %>" role="button">Update an Announcement</a>
+		<a class="btn btn-warning btn-lg" style="margin-right:20px;" href="<%= posts_path %>" role="button">Manage Comics</a>
+		<a class="btn btn-danger btn-lg"  style="margin-right:20px;" href="<%= users_path %>" role="button">Manage Users</a>
+	</p>
+</div>
 
 <% end %>
