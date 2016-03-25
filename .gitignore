@@ -17,3 +17,4 @@ DataOnly.sql
 StructureAndData.sql
 dbexports/
 passenger.3013.pid
+passenger.3013.pid.lock
