@@ -1,5 +1,6 @@
 class PostMetaController < ApplicationController
   before_action :set_post_metum, only: [:show, :edit, :update, :destroy]
+	layout "admin"
 
   # GET /post_meta
   # GET /post_meta.json

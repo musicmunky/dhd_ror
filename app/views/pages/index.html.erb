@@ -1,7 +1,6 @@
 <%- title "DOGHOUSE | #{@comic.title.html_safe}" %>
 
 <div id="maincontent" class="comic">
-
 	<% annc = Announcement.where(active: true) %>
 	<% if annc.size > 0 %>
 		<div id="announcements">
@@ -20,8 +19,7 @@
 	<meta property="og:image" content='<%= "#{root_url}#{meta['comic_file']}" %>' />
 
 	<div id="topNav">
-		<ul>
-			<li>
+		<ul><li>
 				<a id='firstlink' href='<%= "#{root_url}#{frst.id}" %>' class='comicnavlinks' title='<%= frst.title.html_safe %>'>&#60;&#60;</a>
 			</li>
 			<li>
@@ -35,8 +33,7 @@
 			</li>
 			<li>
 				<a id='latestlink' href='<%= "#{root_url}#{last.id}" %>' class='comicnavlinks' title='<%= last.title.html_safe %>'>&#62;&#62;</a>
-			</li>
-		</ul>
+			</li></ul>
 	</div>
 	<div id="imgdiv" style="text-align:center; margin-bottom:0px;">
 		<img src='<%= image_path("dhdcomics/#{meta['comic_file']}") %>' title="<%= meta['comic_description'].html_safe %>">

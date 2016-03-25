@@ -1,0 +1,614 @@
+*:before, *:after {
+    box-sizing: border-box;
+}
+
+html {
+	min-height:100%;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: 'Lato', serif !important;
+	cursor:default;
+	background-color:#EEE !important;
+}
+
+.nav > li > a {
+	display: -webkit-inline-box;
+}
+
+.twitterdiv {
+	float: right;
+	padding: 15px;
+	top: 0px;
+	width: 30%;
+	padding-left: 30px;
+	padding-top: 30px;
+	padding-right:0px;
+}
+
+.bubble
+{
+    background-color: #EFEFEF;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    width: 90% !important;
+    float: left;
+    margin-left: 15px;
+    margin-top: 5px;
+
+}
+
+/*.bubble:after
+{
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: 0 15px 10px;
+	border-color: #AAA transparent;
+	display: block;
+	width: 0;
+	z-index: 1;
+	top: -10px;
+	left: 35px;
+}*/
+
+.tweetdiv {
+	width:100%;
+	float:left;
+	margin-bottom:15px;
+	border-bottom: 1px solid #DDD;
+	padding-bottom: 20px;
+}
+
+.tweeticon {
+	float:left;
+	margin-right:5px;
+	border-radius:5px;
+}
+
+.tweetusername {
+	font-weight:bold;
+	width:100%;
+}
+
+.tweetscreenname {
+	color:#aaa;
+	display:block;
+}
+
+.tweettext {
+	float:left;
+	display:block;
+	margin-top:5px;
+}
+
+.tweetimg {
+	width:90%;
+	margin:5%;
+	display:block;
+	border-radius:2px;
+	float:left;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+.tweetnamewrapper {
+	float:left;
+	height:50px;
+	font-size:1.2em;
+}
+
+.tweetheader {
+	width: 90%;
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+a {
+	text-decoration:none !important;
+	outline:none !important;
+}
+
+h3 {
+	margin-top:0px;
+	color:#666;
+	border-bottom:1px solid #DDD;
+	margin-bottom:10px;
+	padding-bottom:10px;
+	width:100%;
+}
+
+p {
+	line-height:24px;
+}
+
+.keydiv {
+	float:left;
+	width:90px;
+	height:20px;
+	margin-top:5px;
+	margin-left:15px;
+	color:#FFF;
+	font-size:12px;
+	font-weight:bold;
+	line-height:20px;
+	border-radius:4px;
+}
+
+.custom-combobox {
+	position: relative;
+	display: inline-block;
+}
+.custom-combobox-toggle {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin-left: -1px;
+	padding: 0;
+}
+.custom-combobox-input {
+	margin: 0;
+	padding: 5px 10px;
+}
+
+.eventul {
+	height:75px;
+	width:100%;
+	float:left;
+	padding-top:10px;
+	margin-bottom:10px;
+	padding-left:0px;
+	list-style:none;
+	overflow-y:hidden;
+}
+/*
+.eventul:hover {
+	overflow-y:scroll;
+}
+*/
+.eventli {
+	background-color: #ccc;
+    border-radius: 10px;
+    display: block;
+    height: 22px;
+    line-height: 16px;
+    padding: 2px 10px;
+	margin-bottom:1px;
+}
+
+.eventli:hover {
+	background-color:#DDD;
+	cursor:pointer;
+}
+
+.schedule_td_song_name {
+	width:48%;
+}
+
+.schedule_td_cell {
+	width:13%;
+	text-align:center;
+}
+
+.schedule_display_link {
+	color:inherit;
+	text-decoration:none !important;
+}
+
+.schedule_display_link:hover {
+	color:#666;
+}
+
+.dataTables_filter input {
+    background-color: #F3F3F3;
+    border: none;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+.schedule_display_list {
+	width:100%;
+	float:left;
+	margin-bottom:40px;
+	min-height:270px;
+}
+
+.song_list_li {
+	padding-left:5px;
+}
+
+.song_list_li:hover {
+	background-color:#CCC;
+}
+
+.btn {
+	min-width: 100px !important;
+}
+
+.notice-close {
+	float: right;
+	background-color: ;
+	width: 30px !important;
+	min-width: 30px !important;
+	padding: 0 !important;
+	height: 30px;
+	opacity: 0.8;
+	background-color:inherit !important;
+	border:none !important;
+}
+
+.li_delete {
+	width: 20px !important;
+    height: 20px;
+    padding: 0 !important;
+    min-width: 10px !important;
+    font-size: 10px !important;
+    float: right;
+    margin-top: -22px;
+    margin-right: 5px;
+	background-color:inherit;
+	line-height:20px;
+	border:none;
+}
+
+.schedule_note {
+	margin-top:10px;
+	margin-bottom:5px;
+	padding-left:5px;
+	background-color:#fff;
+	color:#222;
+	border: 1px solid #ddd;
+	-webkit-box-shadow: 0 1px 2px 0 rgba(0,0,200,.07);
+	box-shadow: 0 1px 2px 0 rgba(0,0,200,.07);
+	padding:12px;
+}
+
+#current_song_list > li > p {
+	white-space:nowrap;
+	width:215px;
+	overflow:hidden;
+}
+
+#mainwrapper {
+	position: relative;
+	top: 160px;
+	padding-bottom:80px;
+	max-width:1200px;
+}
+
+.container_wrapper {
+	width: 70%;
+	margin-right: 0px;
+	padding-right: 0px;
+	float: left;
+}
+
+.navbar-fixed-top {
+    min-height: 60px !important;
+}
+
+.navbar-brand {	background:url(../assets/fblogo.png);
+				background-size: contain; background-repeat:no-repeat;
+}
+
+.navbar-nav > li > a {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    line-height: 60px !important;
+}
+
+.navbar-text {
+	line-height:30px !important;
+}
+
+@media (max-width: 767px) {
+    .navbar-nav > li > a {
+    	line-height: 20px !important;
+    	padding-top: 10px !important;
+    	padding-bottom: 10px !important;
+	}
+
+	.twitterdiv {
+		display:none;
+	}
+
+	.container_wrapper {
+		width:100%;
+	}
+
+}
+
+.field {
+	float: left;
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 20px;
+    width: 50%;
+}
+
+.rails_form {
+	margin-left:auto;
+	margin-right:auto;
+	width:600px;
+	margin-top:25px;
+	padding:20px;
+}
+
+.txt100 {
+	width:100% !important;
+	resize:none;
+	border:1px solid #DDD;
+}
+
+.field > input[type="text"], input[type="password"], input[type="email"] {
+    width: 50%;
+	line-height:22px;
+}
+
+.actions { width:100%; float:left; }
+
+.uploadfield {
+	background-color: #efefef;
+    border: 1px solid #eaeaea;
+    box-shadow: 0 2px 3px -2px #333;
+}
+
+.fl { float:left; }
+
+.fr { float:right; }
+
+/*
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #f5f5f5;
+}
+*/
+
+/* begin sticky footer css */
+.footer {
+	position: fixed;
+	bottom: 0;
+	height: 30px;
+	width: 100%;
+	background-color: #222;
+	z-index: 1000;
+	font-size:14px;
+	color:#DDD;
+	line-height:30px;
+	box-shadow:0 0 1px 1px rgba(0, 0, 0, 0.15), 0 0 1px 1px rgba(0, 0, 0, 0.03), 0 0 1px 1px rgba(0, 0, 0, 0.03), 0 0 1px 1px rgba(0, 0, 0, 0.12)
+}
+
+.innerfooter {
+	width: 1000px;
+	margin-left:auto;
+	margin-right:auto;
+}
+/* end sticky footer css */
+
+
+
+
+.w50fl { width:50%; float:left; }
+.innerw50fl { width:50%; float:left; }
+.w100fl { width:100%; float:left; }
+.h100fl { height:100%; float:left; }
+
+.container { height: auto; 	width: 100%; }
+
+.navdiv {
+	width:20%;
+	float:left;
+	height:100%;
+	line-height:40px;
+	text-align:center;
+	cursor:pointer;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box; /* Opera/IE 8+ */
+
+}
+
+.navdiv:hover {
+	background-color:#E8EFFF !important;
+}
+
+
+.footer-content-left {
+	width:75%;
+	float:left;
+	text-align:left;
+}
+
+.footer-content-right {
+	width:20%;
+	float:right;
+	text-align:right;
+}
+
+@media (max-width: 1200px) {
+
+	.header {
+		height:183px;
+	}
+
+	.header-logo,
+	.header-units,
+	.header-search {
+		float:none;
+		height:33%;
+		padding:0px;
+		margin-left:auto;
+		margin-right:auto;
+	}
+
+	.logowrapper {
+		width:50%;
+		margin-left:25%;
+	}
+
+	.mainwrapper {
+		width:500px;
+		height:1520px;
+		margin-top:183px;
+/* 		come back to look at this for mobile browsing */
+/*  		zoom: 1.3; */
+/* 		-moz-transform: scale(1.3); */
+/* 		-moz-transform-origin: 0 0; */
+	}
+
+	.navwrapper {
+		padding-top:184px;
+		height:84px;
+		width:520px;
+	}
+
+	.navdiv {
+		width:50%;
+		height:50%;
+	}
+
+	.w50fl {
+		float:none;
+		width:100%;
+	}
+
+	.footer {
+/* 		height:62px; */
+	}
+
+	.innerfooter{
+		width:520px;
+	}
+
+	.footer-content-right,
+	.footer-content-center,
+	.footer-content-left {
+		width:100%;
+		text-align:center;
+	}
+/* Tim additions - also quick and dirty, but Randy smells */
+}
+
+.comment_div {
+	width: 100%;
+	float: left;
+	padding: 10px;
+	border-top: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
+	display:table;
+	margin-top:-1px;
+}
+
+.comment_name {
+	display:block;
+	width:100%;
+	font-weight:bold;
+}
+
+.comment_text {
+	display:block;
+	width:100%;
+	padding:5px;
+}
+
+.comment_text:hover {
+	background-color:#D4E7EB;
+}
+
+.comment_link {
+	float: right;
+    text-transform: uppercase;
+	text-decoration:none;
+	color:#333;
+}
+
+.delete_comment_div {
+    height: 36px;
+    width: 40px;
+	display:table-cell;
+	vertical-align: middle;
+}
+
+.schedule_date {
+	font-size:14px;
+	float:right;
+	height:36px;
+	line-height:36px;
+	display:block;
+}
+
+.announce_div {
+	width:100%;
+	background-color:#222;
+	padding:5px;
+	color:#FFF;
+	margin-top:-1px;
+	border:1px solid #333;
+	font-size:16px;
+}
+
+.announce_div > a {
+	text-decoration:none;
+	color:#FFF;
+}
+
+.announce_span {
+	display: block;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.current_schedule {
+	-webkit-box-shadow: -60px 0 0 0 #1A1A1A;
+	box-shadow: -60px 0px 0px 0px #1A1A1A;
+    margin-left: -20px;
+    padding-left: 25px !important;
+}
+
+.current_span {
+    float: left;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 3em;
+    margin-left: -85px;
+    color: #FFF;
+    transform: rotate(270deg);
+    transform-origin: left top 0px;
+    margin-top: 230px;
+    position: absolute;
+    text-transform: uppercase;
+}
+
+/* Randy Tweaks - Quick and DIIRTY!*/
+
+/* #mainwrapper div img:first-of-type {display:none;} */
+
+.navbar-brand {padding-left:120px !important; margin-right: 50px !important; width:300px !important; height:100px !important; line-height:100px !important;}
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand img {display:none;}
+
+.navbar, .navbar-header, .container-fluid, .navbar-right, {min-height:100px !important;}
+
+/* .navbar-fixed-bottom, .navbar-fixed-top {position:absolute !important;} */
+.navlink {height:100px; !important; }
+.navbar-inverse .navbar-nav>li>a {line-height:100px !important;}
+
+.navbar-text {background-color:#666; color:#999 !important; padding:10px 15px 10px 15px; margin-top:25px !important; margin-right:20px !important;
+				-webkit-border-radius: 5px;	border-radius: 5px;}
+.navbar-text a {color:#fff !important; padding:0 5px 0 5px;}
+.navbar-text a:hover {text-decoration:underline !important;}
+
+.alert a {text-decoration:underline !important;}
+
+.btn-primary {background-color:#fff !important; color:#666 !important; border:1px solid #ccc !important;}
+
+table thead tr{ border:none;}

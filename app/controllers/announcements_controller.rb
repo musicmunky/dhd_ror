@@ -1,5 +1,6 @@
 class AnnouncementsController < ApplicationController
   before_action :set_announcement, only: [:show, :edit, :update, :destroy]
+	layout "admin"
 
   # GET /announcements
   # GET /announcements.json

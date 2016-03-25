@@ -1,53 +1,40 @@
-<%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<% btntxt = new_or_edit == "edit" ? "Update Comic" : "Add New Comic" %>
 
-      <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for(@post, html: { class: "rails_form", style: 'height:500px;' }) do |f| %>
+	<% if @post.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+			<ul>
+			<% @post.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
 
-  <div class="field">
-    <%= f.label :author %><br>
-    <%= f.number_field :author %>
-  </div>
-  <div class="field">
-    <%= f.label :create_date_gmt %><br>
-    <%= f.datetime_select :create_date_gmt %>
-  </div>
-  <div class="field">
-    <%= f.label :update_date_gmt %><br>
-    <%= f.datetime_select :update_date_gmt %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_area :title %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
-  </div>
-  <div class="field">
-    <%= f.label :live_date %><br>
-    <%= f.datetime_select :live_date %>
-  </div>
-  <div class="field">
-    <%= f.label :guid %><br>
-    <%= f.text_area :guid %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<input type="hidden" id="post_user_id" name="post[user_id]" value="<%#= current_user.id %>" />
+	<div class="field w100fl">
+		<%= f.label :title %><br>
+		<%= f.text_field :title, { class: "txt100", style: "" } %>
+	</div>
+	<div class="field w100fl">
+		<%= f.label :content %><br>
+		<%= f.text_area :content, { class: "txt100", style: "" } %>
+	</div>
+	<div class="field w100fl">
+		<%= f.label :name %><br>
+		<%= f.text_field :name, { class: "txt100", style: "" } %>
+	</div>
+	<div class="field w100fl">
+		<%= f.label :status %><br>
+		<%= f.text_field :status, { class: "txt100", style: "" } %>
+	</div>
+	<div class="field w100fl">
+		<%= f.label :live_date %><br>
+		<%= f.datetime_select :live_date, { class: "txt100", style: "" } %>
+	</div>
+	<div class="actions w100fl">
+		<%= f.submit btntxt, { class: "btn btn-success", style: "float:left;width:150px;", onclick: "return checkComicForm();" } %>
+		<%= link_to 'Back', posts_path, { class: "btn btn-primary", style: "float:right;width:150px;" } %>
+	</div>
 <% end %>

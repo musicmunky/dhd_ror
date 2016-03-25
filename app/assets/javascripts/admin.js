@@ -13,9 +13,12 @@
 // require jquery
 // require jquery_ujs
 //= require jquery-1.12.1.min
-//= require jquery.scrollToTop
+//= require jquery-ui-1.10.4.custom
 //= require jquery.turbolinks
+//= require jquery.dataTables.min
+//= require moment.min
 //= require fusionlib
-//= require dhd
+//= require bootstrap.min
 //= require turbolinks
+//= require dhdadmin
 // require_tree .
