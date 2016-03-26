@@ -1,8 +1,9 @@
 class PagesController < ApplicationController
 
 	def index
+		@comic = {}
+		@meta  = {}
 		begin
-			@comic = {}
 			if params[:id]
 				@id = params[:id].gsub('?p=', '')
 				@comic = Post.find(@id)
@@ -19,7 +20,12 @@ class PagesController < ApplicationController
 			@comic.title = "Move along..."
 			@comic.content = "Without precise calculations we could fly right through a popup or bounce too close to a supernova, and that'd end your trip real quick, wouldn't it?"
 		end
-
+		if @comic.id > 0
+			@meta = @comic.get_post_meta
+		else
+			@meta['comic_file'] = "obiwan.jpg"
+			@meta['comic_description'] = "Hokey religions and ancient weapons are no match for a good webcomic in your browser..."
+		end
 	end
 
 	def dhdadmin

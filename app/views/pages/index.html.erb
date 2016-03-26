@@ -15,52 +15,26 @@
 	<% rand = Post.get_random %>
 	<% gnxt = Post.get_next(@comic.id) %>
 	<% last = Post.get_latest %>
-	<% meta = {} %>
 	<% cmid = @comic.id %>
-	<% if @comic.id > 0 %>
-		<% meta = @comic.get_post_meta %>
-	<% else %>
-		<% meta['comic_file'] = "obiwan.jpg" %>
-		<% meta['comic_description'] = "Hokey religions and ancient weapons are no match for a good webcomic in your browser..." %>
-	<% end %>
-	<meta property="og:image" content='<%= "#{root_url}#{meta['comic_file']}" %>' />
 
 	<div id="topNav">
-		<ul><li>
-				<a id='firstlink' href='<%= "#{root_url}#{frst.id}" %>' class='comicnavlinks' title='<%= frst.title.html_safe %>'>&#60;&#60;</a>
-			</li>
-			<li>
-				<a id='previouslink' href='<%= "#{root_url}#{prev.id}" %>' class='comicnavlinks' title='<%= prev.title.html_safe %>'>&#60;</a>
-			</li>
-			<li>
-				<a id='randomlink' href='<%= "#{root_url}#{rand.id}" %>' class='comicnavlinks' title='<%= rand.title.html_safe %>'>&#63;</a>
-			</li>
-			<li>
-				<a id='nextlink' href='<%= "#{root_url}#{gnxt.id}" %>' class='comicnavlinks' title='<%= gnxt.title.html_safe %>'>&#62;</a>
-			</li>
-			<li>
-				<a id='latestlink' href='<%= "#{root_url}#{last.id}" %>' class='comicnavlinks' title='<%= last.title.html_safe %>'>&#62;&#62;</a>
-			</li></ul>
+		<ul><li><a id='firstlink' href='<%= "#{root_url}#{frst.id}" %>' class='comicnavlinks' title='<%= frst.title.html_safe %>'>&#60;&#60;</a></li>
+			<li><a id='previouslink' href='<%= "#{root_url}#{prev.id}" %>' class='comicnavlinks' title='<%= prev.title.html_safe %>'>&#60;</a></li>
+			<li><a id='randomlink' href='<%= "#{root_url}#{rand.id}" %>' class='comicnavlinks' title='<%= rand.title.html_safe %>'>&#63;</a></li>
+			<li><a id='nextlink' href='<%= "#{root_url}#{gnxt.id}" %>' class='comicnavlinks' title='<%= gnxt.title.html_safe %>'>&#62;</a></li>
+			<li><a id='latestlink' href='<%= "#{root_url}#{last.id}" %>' class='comicnavlinks' title='<%= last.title.html_safe %>'>&#62;&#62;</a></li>
+		</ul>
 	</div>
 	<div id="imgdiv" style="text-align:center; margin-bottom:0px;">
-		<img src='<%= image_path("dhdcomics/#{meta['comic_file']}") %>' title="<%= meta['comic_description'].html_safe %>">
+		<img src='<%= image_path("dhdcomics/#{@meta['comic_file']}") %>' title="<%= @meta['comic_description'].html_safe %>">
 	</div>
 	<div id="bottomNav">
-		<ul><li>
-				<a id='firstlink' href='<%= "#{root_url}#{frst.id}" %>' class='comicnavlinks' title='<%= frst.title.html_safe %>'>&#60;&#60;</a>
-			</li>
-			<li>
-				<a id='previouslink' href='<%= "#{root_url}#{prev.id}" %>' class='comicnavlinks' title='<%= prev.title.html_safe %>'>&#60;</a>
-			</li>
-			<li>
-				<a id='randomlink' href='<%= "#{root_url}#{rand.id}" %>' class='comicnavlinks' title='<%= rand.title.html_safe %>'>&#63;</a>
-			</li>
-			<li>
-				<a id='nextlink' href='<%= "#{root_url}#{gnxt.id}" %>' class='comicnavlinks' title='<%= gnxt.title.html_safe %>'>&#62;</a>
-			</li>
-			<li>
-				<a id='latestlink' href='<%= "#{root_url}#{last.id}" %>' class='comicnavlinks' title='<%= last.title.html_safe %>'>&#62;&#62;</a>
-			</li></ul>
+		<ul><li><a id='firstlink' href='<%= "#{root_url}#{frst.id}" %>' class='comicnavlinks' title='<%= frst.title.html_safe %>'>&#60;&#60;</a></li>
+			<li><a id='previouslink' href='<%= "#{root_url}#{prev.id}" %>' class='comicnavlinks' title='<%= prev.title.html_safe %>'>&#60;</a></li>
+			<li><a id='randomlink' href='<%= "#{root_url}#{rand.id}" %>' class='comicnavlinks' title='<%= rand.title.html_safe %>'>&#63;</a></li>
+			<li><a id='nextlink' href='<%= "#{root_url}#{gnxt.id}" %>' class='comicnavlinks' title='<%= gnxt.title.html_safe %>'>&#62;</a></li>
+			<li><a id='latestlink' href='<%= "#{root_url}#{last.id}" %>' class='comicnavlinks' title='<%= last.title.html_safe %>'>&#62;&#62;</a></li>
+		</ul>
 	</div>
 </div>
 
@@ -68,7 +42,7 @@
 	<div id="title-signoff-share">
 		<h2 id="titleheader"><%= @comic.title.html_safe %></h2>
 		<div id="subtext"><%= @comic.content.html_safe %></div>
-		<div id="alttxt" class="mobile-only"><%= meta['comic_description'].html_safe %></div>
+		<div id="alttxt" class="mobile-only"><%= @meta['comic_description'].html_safe %></div>
 		<div id="permalink">
 			<% prmlnk = cmid > 0 ? "#{root_url}#{@comic.id}" : root_url %>
 			Permalink: <a target="_blank" href='<%= prmlnk %>'><%= prmlnk %></a>

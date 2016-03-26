@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<!-- CHECK OUT WHY COMIC 196 ISNT WORKING -->
-
-
 
 		<title><%= content_for?(:title) ? content_for(:title) : "DOGHOUSE" %></title>
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
@@ -40,7 +37,7 @@
 		<!-- END SOCIAL MEDIA SHARING BUTTONS -->
 
 		<!-- FACEBOOK OPEN GRAPH META PROPERTIES -->
-<!--		<meta property="og:image" content="<%#= 'http://thedoghousediaries.com/' . trim($html['content']['name']) %>" /> -->
+		<meta property="og:image" content='<%= "#{root_url}#{@meta['comic_file']}" %>' />
 
 	</head>
 	<body>
