@@ -28,6 +28,11 @@ Rails.application.routes.draw do
 	get 'pages/store'
 
 
+
+
+	# MAKE SURE THIS LINE IS THE LAST ROUTE IN THE FILE!!!
+	match '*p', via: :all, to: 'pages#index'
+
 	# The priority is based upon order of creation: first created -> highest priority.
 	# See how all your routes lay out with "rake routes".
 

@@ -1,13 +1,16 @@
 <% content_for :admin do %>
 
-<div class="jumbotron">
+<div class="jumbotron" style="text-align:center;">
 	<h1>DHD Administrators</h1>
 	<p>What would you like to do?</p>
-	<p><a class="btn btn-primary btn-lg" style="margin-right:20px;" href="<%= new_post_path %>" role="button">Add a New Comic</a>
-		<a class="btn btn-success btn-lg" style="margin-right:20px;" href="<%= announcements_path %>" role="button">Update an Announcement</a>
-		<a class="btn btn-warning btn-lg" style="margin-right:20px;" href="<%= posts_path %>" role="button">Manage Comics</a>
-		<a class="btn btn-danger btn-lg"  style="margin-right:20px;" href="<%= users_path %>" role="button">Manage Users</a>
-	</p>
+	<div style="width:100%;margin-bottom:30px;margin-top:30px;">
+		<a class="btn btn-primary btn-lg" style="margin-right:30px;" href="<%= new_post_path %>" role="button">Add a New Comic</a>
+		<a class="btn btn-success btn-lg" style="" href="<%= announcements_path %>" role="button">Update an Announcement</a>
+	</div>
+	<div style="width:100%;">
+		<a class="btn btn-warning btn-lg" style="margin-right:30px;" href="<%= posts_path %>" role="button">Manage Comics</a>
+		<a class="btn btn-danger btn-lg"  style="" href="<%= users_path %>" role="button">Manage Users</a>
+	</div>
 </div>
 
 <% end %>

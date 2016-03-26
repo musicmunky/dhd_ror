@@ -1,7 +1,6 @@
 <% content_for :admin do %>
-<h1>New Announcement</h1>
 
-<%= render 'form' %>
+<h3>New Announcement</h3>
+<%= render 'form', new_or_edit: "new" %>
 
-<%= link_to 'Back', announcements_path %>
 <% end %>
