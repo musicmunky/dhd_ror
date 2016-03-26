@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+	before_action :authenticate_user!, :except => [:index, :archive, :about, :contact, :store]
 
 	def index
 		@comic = {}
