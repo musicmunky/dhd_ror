@@ -1,0 +1,12 @@
+
+Finish Admin functionality:
+	Managing Comics (uploads, changing info, etc)
+	Managing Users (adding new users, resetting passwords, changing admin status, etc)
+	Finish CSS for all the admin forms
+	Finish javascript for all admin forms
+
+Add RSS feed functionality
+Add JSON requests
+
+look into routing to handle comics such as 5414
+
