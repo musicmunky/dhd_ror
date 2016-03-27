@@ -47,7 +47,6 @@
 								<%= link_to('Logout', destroy_user_session_path, { :method => :delete, style: "text-decoration:none;color:#9D9D9D" }) %>
 							<% else %>
 								<%= link_to('Login', new_user_session_path, { class: "navlink", style:"text-decoration:none;color:#9D9D9D;" })  %>
-								or <%= link_to('Sign up', new_user_registration_path, { class: "navlink", style: "text-decoration:none;color:#9D9D9D;"}) %>
 							<% end %>
 						</p>
 					</li>

@@ -3,16 +3,15 @@
 <div id="all_users" style="padding:0px;">
 
 	<h3>Manage Users</h3>
-	<%# cuia = (user_signed_in? and current_user.has_role? :admin) ? true : false %>
-	<%# cuid = user_signed_in? ? current_user.id : 0 %>
-	<input type="hidden" id="current_user_is_admin" value="<%#= cuia %>" />
-	<input type="hidden" id="current_user_id" value="<%#= cuid %>" />
+	<% cuia = (user_signed_in? and current_user.has_role? :admin) ? true : false %>
+	<% cuid = user_signed_in? ? current_user.id : 0 %>
+	<input type="hidden" id="current_user_is_admin" value="<%= cuia %>" />
+	<input type="hidden" id="current_user_id" value="<%= cuid %>" />
 	<table class="table">
 		<thead><tr>
 			<th>Name</th>
 			<th>Email Address</th>
 			<th>Last Sign-in</th>
-			<th style="text-align:center;">Admin?</th>
 			<th style="text-align:center">Disabled?</th>
 			<th></th></tr>
 		</thead>
@@ -33,15 +32,9 @@
 					</td>
 					<%#= user.current_sign_in_at.strftime("%m/%d/%Y %I:%M:%S %p") %>
 					<td style="vertical-align:middle;">
-						<% begin %>
-							<%= time_ago_in_words(user.current_sign_in_at) %> ago
-						<% rescue %>
-							<i>Never signed in</i>
+						<% begin %><%= time_ago_in_words(user.current_sign_in_at) %> ago
+						<% rescue %><i>Never signed in</i>
 						<% end %>
-					</td>
-					<td style="text-align:center;vertical-align:middle;">
-						<% chk = (user.has_role? :admin) ? "checked" : "" %>
-						<input type="checkbox" id="admin_<%= user.id %>" <%= chk %> onchange="updateAdmin(<%= user.id %>, this.checked)">
 					</td>
 					<td style="text-align:center;vertical-align:middle;">
 						<% chk = user.archive? ? "checked" : "" %>

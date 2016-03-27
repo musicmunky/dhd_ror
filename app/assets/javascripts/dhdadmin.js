@@ -21,8 +21,6 @@ jQuery( document ).ready(function() {
 		"columnDefs": cmc_coldefs
 	});
 
-
-
 });
 
 
@@ -34,34 +32,6 @@ function closeNotice(t)
 		}
 	}
 	catch(err) { FUSION.error.logError(err); }
-}
-
-
-function updateAdmin(id, chk)
-{
-	var uid = id;
-	var adm = chk;
-
-	if(!uid || FUSION.lib.isBlank(uid)) {
-		return false;
-	}
-
-	var info = {
-		"type": "POST",
-		"path": "/pages/1/updateAdmin",
-		"data": {
-			"user_id": uid,
-			"is_admin": adm
-		},
-		"func": updateAdminResponse
-	};
-	FUSION.lib.ajaxCall(info);
-}
-
-
-function updateAdminResponse(h)
-{
-	var hash = h || {};
 }
 
 
@@ -87,14 +57,151 @@ function disableUser(id, chk)
 }
 
 
-function deleteUser(id)
+function disableUserResponse(h)
 {
-	var uid = id;
-	if(!uid || FUSION.lib.isBlank(uid)) {
+	var hash = h || {};
+}
+
+
+function updateAnnouncementActive(t)
+{
+	var chk = t || {};
+	if(!t) {
 		return false;
 	}
-	alert("Currently this functionality is not implemented, but it *might* be soon");
-	return false;
+
+	var el_id = chk.id.split("_");
+	var aid = el_id[el_id.length - 1];
+	var info = {
+		"type": "POST",
+		"path": "/announcements/" + aid + "/activeAnnouncement",
+		"data": {
+			"announcement_id": aid,
+			"is_active": chk.checked
+		},
+		"func": updateAnnouncementActiveResponse
+	};
+	FUSION.lib.ajaxCall(info);
+}
+
+
+function updateAnnouncementActiveResponse(h)
+{
+	var hash = h || {};
+}
+
+
+function ignoreEnter(event)
+{
+	var keynum = -1;
+	if(window.event){ // IE
+		keynum = event.keyCode;
+	}
+	else if(event.which) { // Chrome/Firefox/Opera
+		keynum = event.which;
+	}
+
+	if(keynum == 13)
+	{
+		event.preventDefault();
+	}
+}
+
+
+function updateField(e, t, i)
+{
+	var elm = e || null;
+	var typ = t || "";
+	var uid = i || 0;
+	var cur = parseInt(FUSION.get.node("current_user_id").value);
+
+	if(!elm || FUSION.lib.isBlank(typ) || uid == 0) {
+		console.log("Error during update - insufficient data for submission");
+		return false;
+	}
+
+	var txt = elm.textContent;
+
+	if(FUSION.lib.isBlank(txt) || txt.match(/^\s*<br\s*(\/)?>\s*$/)) {
+		alert("Blank values are not allowed!");
+		elm.focus();
+		return false;
+	}
+
+	var data = {};
+	switch (typ) {
+		case "name":
+			var narry = txt.split(" ");
+			var fname = narry[0];
+			var lname = "";
+			if(narry.length > 1) {
+				var larry = narry.slice(1, narry.length);
+				lname = larry.join(" ");
+			}
+			data['first_name'] = fname;
+			data['last_name']  = lname;
+			break;
+		case "email":
+			if(!txt.match(/\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b/))
+			{
+				alert("Please make sure you've entered a valid email address!");
+				elm.focus();
+				return false;
+			}
+			data['email'] = txt;
+			break;
+		default:
+			alert("Not able to determine what you wanted to update\n\nPlease refresh the page and try again");
+			return false;
+			break;
+	}
+
+	var info = {
+		"type": "POST",
+		"path": "/pages/" + uid + "/updateUserInfo",
+		"data": {
+			"user_id": uid,
+			"field_data": data,
+			"user_req_update": cur
+		},
+		"func": updateUserInfoResponse
+	};
+	FUSION.lib.ajaxCall(info);
+}
+
+
+function updateUserInfoResponse(h)
+{
+	var hash = h || {};
+}
+
+
+function resetPassword(id)
+{
+	var uid = id || 0;
+	if(uid == 0) {
+		alert("No user selected - please refresh the page and try again");
+		return false;
+	}
+	var yn = confirm("Are you sure you want to reset this user's password?");
+	if(yn)
+	{
+		var info = {
+			"type": "POST",
+			"path": "/pages/" + uid + "/resetPassword",
+			"data": {
+				"user_id": uid
+			},
+			"func": resetPasswordResponse
+		};
+		FUSION.lib.ajaxCall(info);
+	}
+}
+
+
+function resetPasswordResponse(h)
+{
+	var hash = h || {};
 }
 
 

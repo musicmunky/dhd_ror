@@ -27,7 +27,13 @@ Rails.application.routes.draw do
 	get 'store', to: 'pages#store', as: :store
 	get 'pages/store'
 
-
+	resources :pages do
+		member do
+			post "disableUser"
+			post "updateUserInfo"
+			post "resetPassword"
+		end
+	end
 
 
 	# MAKE SURE THIS LINE IS THE LAST ROUTE IN THE FILE!!!
