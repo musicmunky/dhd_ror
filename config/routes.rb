@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 	root 'pages#index'
 
 	devise_for :users, :controllers => { registrations: 'registrations' }
-	resources :announcements
+
 	resources :post_meta
 	resources :posts
 
@@ -35,6 +35,11 @@ Rails.application.routes.draw do
 		end
 	end
 
+	resources :announcements do
+		member do
+			post "activeAnnouncement"
+		end
+	end
 
 	# MAKE SURE THIS LINE IS THE LAST ROUTE IN THE FILE!!!
 	match '*p', via: :all, to: 'pages#index'

@@ -14,9 +14,11 @@ jQuery( document ).ready(function() {
 		FUSION.set.overlayMouseWait();
 	});
 
-	var cmc_coldefs = [{ "targets": [ 4 ], "visible": false, "searchable": true }];
+	var cmc_coldefs = [{ "targets": [ 4 ], "visible": false, "searchable": true },
+					   { "targets": [ 7 ], "searchable": false, "orderable": false }];
 
 	$('#post_table').DataTable({
+		"order": [[ 0, "desc" ]],
 		"pageLength":10,
 		"columnDefs": cmc_coldefs
 	});
@@ -60,6 +62,28 @@ function disableUser(id, chk)
 function disableUserResponse(h)
 {
 	var hash = h || {};
+}
+
+
+function checkAnnouncementForm()
+{
+	try {
+		var annc = FUSION.get.node("announcement_content");
+		var auid = FUSION.get.node("announcement_user_id");
+		if(FUSION.lib.isBlank(annc.value)) {
+			alert("Please enter some content for this announcement!");
+			return false;
+		}
+		if(FUSION.lib.isBlank(auid.value)) {
+			alert("There was an issue verifying your identity - please refresh the page and try again");
+			return false
+		}
+		return true;
+	}
+	catch(err) {
+		FUSION.error.logError(err);
+		return false;
+	}
 }
 
 

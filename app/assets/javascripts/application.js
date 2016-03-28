@@ -10,8 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-// require jquery
-// require jquery_ujs
+//= require jquery
+//= require jquery_ujs
 //= require jquery-1.12.1.min
 //= require jquery.scrollToTop
 //= require jquery.turbolinks

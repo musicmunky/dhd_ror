@@ -2,9 +2,9 @@
 
 <h3>
 	Announcements
-	<%# if user_signed_in? and current_user.has_role? :admin %>
+	<% if user_signed_in? and current_user.has_role? :admin %>
 		<%= link_to 'New Announcement', new_announcement_path, { class: "btn btn-default btn-xs", style: "float:right;margin-top:2px;" } %>
-	<%# end %>
+	<% end %>
 </h3>
 
 <table class="table">
@@ -24,7 +24,7 @@
 			<td><%= User.find(announcement.user_id).get_name %></td>
 			<% chk = (announcement.active?) ? "checked" : "" %>
 			<td style="text-align:center">
-				<input type="checkbox" id="announcement_<%= announcement.id %>" <%= chk %> onchange="updateAnnouncement(<%= announcement.id %>, this.checked)">
+				<input type="checkbox" id="announcement_<%= announcement.id %>" <%= chk %> onchange="updateAnnouncementActive(this)">
 			</td>
 			<td><%= link_to 'Edit', edit_announcement_path(announcement) %></td>
 			<td><%= link_to 'Delete', announcement, method: :delete, data: { confirm: 'Are you sure you want to delete this announcement?' } %></td>

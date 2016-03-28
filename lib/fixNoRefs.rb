@@ -7,6 +7,40 @@ require 'sequel'
 MYSQL = Sequel.connect(:adapter => 'mysql2', :host => "localhost", :database => "dhd_ror_development", :username => "", :password => "", :test => true)
 
 =begin
+
+@com_array = MYSQL["SELECT p.id, pm.id AS pmid, pm.value FROM posts p, post_meta pm WHERE pm.meta_key='comic_file' AND p.id = pm.post_id ORDER BY p.id"]
+@post_meta = MYSQL[:post_meta].where(:meta_key => "comic_file")
+
+puts "#{@post_meta.count}"
+
+@no_file = []
+
+@com_array.each do |comic|
+#	puts "ID: #{comic[:id]}  FILE: #{comic[:value]}"
+	lscmd = `ls -A1 ../app/assets/images/dhdcomics | grep "#{comic[:value]}"`
+	lsstr = lscmd.strip
+	if lsstr == ""
+		f = comic[:value]
+		newlscmd = `ls -A1 ../app/assets/images/dhdcomics | grep "#{f.split('.png').first}"`
+		newlsstr = newlscmd.strip
+		newlsstr.gsub!(/\n/, "")
+		if newlsstr == ""
+			puts "ERROR FOR COMIC: #{comic[:id]}"
+		else
+#			@result = MYSQL["UPDATE post_meta SET value='#{newlsstr}' WHERE id=#{comic[:pmid]}"]
+			@result = @post_meta.where(:id => comic[:pmid]).update(:value => newlsstr)
+			puts "UPDATED ID #{comic[:pmid]} FOR COMIC ID #{comic[:id]} WITH FILE: #{newlsstr}  (#{@result.to_s})"
+#			@no_file.push({"ID" => comic[:id], "FILE" => newlsstr})
+		end
+# 		puts "ID: #{comic[:id]}  FILE IS: #{lsstr}"
+	end
+end
+#puts @no_file.to_s
+#puts "SIZE IS: #{@com_array.count},  HAS_FILE: #{has_file},  NOT_FILE: #{not_file},  TOTAL: #{ttl}"
+=end
+
+
+=begin
 file_array = []
 
 problem_array = [[51, "2009-01-15"],[65, "2009-01-20"],[70, "2009-01-22"],[84, "2009-01-26"],[91, "2009-01-28"],
@@ -33,6 +67,7 @@ problem_array.each do |parr|
 end
 =end
 
+=begin
 problem_array = [[196,'Always forget something','2009-03-04-57695733095b3a370fc05ce5a7e95e0c.png'],
 [302,'Strategy','2009-04-08-433fddd4d4118d0e16456cac6db7eb70.jpg'],[312,'Throwback','2009-04-13-7a5deb7e50c69ad960c6be23e4316890.png'],
 [327,'Pitter','2009-04-15-343d763b1ff26a07a92831ce4979c55f.png'],[334,'The Photoshop Argument','2009-04-17-4143097bc2d0451f4da05e4a536488d1.png'],
@@ -57,4 +92,4 @@ problem_array.each do |parr|
 
 	puts "INSERTED: #{parr[2]} FOR COMIC ID: #{parr[0]}"
 end
-
+=end
