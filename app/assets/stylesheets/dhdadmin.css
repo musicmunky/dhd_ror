@@ -277,6 +277,7 @@ p {
 #mainwrapper {
 	position: relative;
 	top: 160px;
+/* 	top:100px; */
 	padding-bottom:80px;
 	max-width:1200px;
 }

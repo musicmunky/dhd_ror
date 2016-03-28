@@ -1,6 +1,6 @@
 <% btntxt = new_or_edit == "edit" ? "Update Comic" : "Add New Comic" %>
 
-<%= form_for(@post, html: { class: "rails_form", style: 'height:500px;' }) do |f| %>
+<%= form_for(@post, html: { class: "rails_form", style: 'height:750px;' }) do |f| %>
 	<% if @post.errors.any? %>
 		<div id="error_explanation">
 			<h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -14,12 +14,24 @@
 
 	<input type="hidden" id="post_user_id" name="post[user_id]" value="<%#= current_user.id %>" />
 	<div class="field w100fl">
+		<%= f.label "File" %><br>
+		<%= f.file_field :name, { class: "txt100", style: "", id: "post_file", name: "post[file]" } %>
+	</div>
+	<div class="field w100fl">
+		<%= f.label "Filename" %><br>
+		<%= f.text_field :name, { class: "txt100", style: "", id: "post_filename", name: "post[filename]" } %>
+	</div>
+	<div class="field w100fl">
 		<%= f.label :title %><br>
 		<%= f.text_field :title, { class: "txt100", style: "" } %>
 	</div>
 	<div class="field w100fl">
-		<%= f.label :content %><br>
-		<%= f.text_area :content, { class: "txt100", style: "" } %>
+		<%= f.label "Alt-Text" %><br>
+		<%= f.text_field :name, { class: "txt100", style: "", id: "post_alttext", name: "post[alttext]" } %>
+	</div>
+	<div class="field w100fl">
+		<%= f.label "Sub-Text" %><br>
+		<%= f.text_area :content, { class: "txt100", style: "height:100px" } %>
 	</div>
 	<div class="field w100fl">
 		<%= f.label :name %><br>

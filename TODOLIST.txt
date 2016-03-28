@@ -1,4 +1,3 @@
-
 TODO LIST:
 
 Finish Admin functionality:
@@ -8,11 +7,11 @@ Finish Admin functionality:
 		Editing existing comics
 		Setting "go live" dates and changing queries to sort by "live" first
 
-	Managing Announcements
-		Editing existing announcements
-		Adding new announcements
+#	Managing Announcements
+#		Editing existing announcements
+#		Adding new announcements
 
-	Fix routing to handle user sign outs (redirects to index page, probably due to 'catch all' route at bottom)
+#	Fix routing to handle user sign outs (redirects to index page, probably due to 'catch all' route at bottom)
 
 	Finish CSS for all the admin forms
 
