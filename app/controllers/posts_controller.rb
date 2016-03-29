@@ -37,6 +37,7 @@ class PostsController < ApplicationController
 			f = post_params[:file]
 #  			logger.debug "FILENAME: #{f.original_filename}"
 			dir = "/var/www/dhd_ror/TEMPIMGDIR/images/"
+			logger.debug("Attempting to rename '#{dir}#{f.original_filename}' to '#{dir}#{post_params[:file_name]}'")
 			File.rename("#{dir}#{f.original_filename}", "#{dir}#{post_params[:file_name]}")
 		rescue => error
 #			logger.debug "\n\n\n\n\n\n\nPOST IS: #{post_params.to_s}\n\n\n\n\n\n\n"

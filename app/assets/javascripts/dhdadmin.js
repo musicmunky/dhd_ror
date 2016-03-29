@@ -130,8 +130,8 @@ function checkComicForm()
 		alert(error);
 		return false;
 	}
-// 	return true;
-	return false;
+	return true;
+// 	return false;
 }
 
 
