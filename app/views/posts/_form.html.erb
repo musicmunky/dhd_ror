@@ -1,9 +1,9 @@
 <% btntxt = new_or_edit == "edit" ? "Update Comic" : "Add New Comic" %>
 
-<%= form_for(@post, html: { class: "rails_form", style: 'height:750px;' }) do |f| %>
+<%= form_for(@post, html: { class: "rails_form", style: 'height:700px;', multipart: true }) do |f| %>
 	<% if @post.errors.any? %>
 		<div id="error_explanation">
-			<h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+			<h3><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h3>
 			<ul>
 			<% @post.errors.full_messages.each do |message| %>
 				<li><%= message %></li>
@@ -12,14 +12,15 @@
 		</div>
 	<% end %>
 
-	<input type="hidden" id="post_user_id" name="post[user_id]" value="<%#= current_user.id %>" />
+	<input type="hidden" id="post_user_id" name="post[user_id]" value="<%= current_user.id %>" />
+	<input type="hidden" id="post_name" name="post[name]" value="<%= @post.name %>" />
 	<div class="field w100fl">
 		<%= f.label "File" %><br>
-		<%= f.file_field :name, { class: "txt100", style: "", id: "post_file", name: "post[file]" } %>
+		<%= file_field :post, :file, { class: "txt100", style: "", id: "post_file", name: "post[file]", accept: 'image/png,image/gif,image/jpeg' } %>
 	</div>
 	<div class="field w100fl">
-		<%= f.label "Filename" %><br>
-		<%= f.text_field :name, { class: "txt100", style: "", id: "post_filename", name: "post[filename]" } %>
+		<%= f.label "Filename" do %>Filename <span style="color:#B00;font-style:italic;margin-left:5px;">(You must include the file extension!)</span><% end %><br>
+		<%= text_field :name, :file_name, { class: "txt100", style: "", id: "post_file_name", name: "post[file_name]" } %>
 	</div>
 	<div class="field w100fl">
 		<%= f.label :title %><br>
@@ -27,23 +28,28 @@
 	</div>
 	<div class="field w100fl">
 		<%= f.label "Alt-Text" %><br>
-		<%= f.text_field :name, { class: "txt100", style: "", id: "post_alttext", name: "post[alttext]" } %>
+		<%= text_field :name, :alttext, { class: "txt100", style: "", id: "post_alttext", name: "post[alttext]" } %>
 	</div>
 	<div class="field w100fl">
 		<%= f.label "Sub-Text" %><br>
 		<%= f.text_area :content, { class: "txt100", style: "height:100px" } %>
 	</div>
-	<div class="field w100fl">
-		<%= f.label :name %><br>
-		<%= f.text_field :name, { class: "txt100", style: "" } %>
-	</div>
-	<div class="field w100fl">
-		<%= f.label :status %><br>
-		<%= f.text_field :status, { class: "txt100", style: "" } %>
-	</div>
-	<div class="field w100fl">
+	<div class="field w50fl" style="padding-right:10px;">
 		<%= f.label :live_date %><br>
-		<%= f.datetime_select :live_date, { class: "txt100", style: "" } %>
+		<%= f.text_field :live_date, { class: "txt100", style: "" } %>
+	</div>
+	<div class="field w50fl" style="padding-left:10px;">
+		<%= f.label :live_date do %>Time <span style="color:#B00;font-style:italic;margin-left:5px;">(Defaults to 00:00:00)</span><% end %><br>
+		<%= text_field :name, :live_time, { class: "txt100", style: "", id: "post_live_time", name: "post[live_time]", value: "00:00:00" } %>
+	</div>
+	<div class="field w100fl" style="margin-bottom:50px;">
+		<% chk1 = @post.status.nil? || @post.status == "active" ? "checked" : "" %>
+		<% chk2 = !@post.status.nil? && @post.status == "inactive" ? "checked" : "" %>
+		<%= f.label "Comic Status" %><br>
+		<%= radio_button "post", "status", "active", { style: "display:block;float:left;margin-top:5px;margin-right:3px", checked: chk1 } %>
+		<%= f.label "Active", { style:"float:left;" } %>
+		<%= radio_button "post", "status", "inactive", { style: "display:block;float:left;margin-top:5px;margin-right:3px;margin-left:30px;", checked: chk2 } %>
+		<%= f.label "Inactive", { style:"float:left;" } %>
 	</div>
 	<div class="actions w100fl">
 		<%= f.submit btntxt, { class: "btn btn-success", style: "float:left;width:150px;", onclick: "return checkComicForm();" } %>

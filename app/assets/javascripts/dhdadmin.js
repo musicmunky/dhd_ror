@@ -23,6 +23,13 @@ jQuery( document ).ready(function() {
 		"columnDefs": cmc_coldefs
 	});
 
+	$( "#post_live_date" ).datepicker({
+		minDate: 0,
+		maxDate: "+1M"}).datepicker('setDate', '+0d');
+
+	$('#post_live_time').timepicker({ 'timeFormat': 'H:i:s' });
+
+
 });
 
 
@@ -62,6 +69,69 @@ function disableUser(id, chk)
 function disableUserResponse(h)
 {
 	var hash = h || {};
+}
+
+
+function checkComicForm()
+{
+	var file = FUSION.get.node("post_file").value;
+	var name = FUSION.get.node("post_file_name").value;
+	var cttl = FUSION.get.node("post_title").value;
+	var calt = FUSION.get.node("post_alttext").value;
+	var csub = FUSION.get.node("post_content").value;
+	var golv = FUSION.get.node("post_live_time").value;
+	var rdio = document.getElementsByName("post[status]");
+	var pnam = FUSION.get.node("post_name").value;
+
+	var chck = true;
+	var rdbt = "";
+	for(var elem in rdio)
+	{
+		if(rdio[elem].checked)
+		{
+			rdbt = rdio[elem].value;
+			chck = false;
+		}
+	}
+
+	var error = "";
+	var missing = "";
+	if(file.match(/^\s*$/))
+	{
+		missing = missing + "\nFile";
+	}
+	if(name.match(/^\s*$/))
+	{
+		missing = missing + "\nFile name";
+	}
+	if(cttl.match(/^\s*$/))
+	{
+		missing = missing + "\nComic Title";
+	}
+	if(calt.match(/^\s*$/))
+	{
+		missing = missing + "\nAlt-text";
+	}
+	if(csub.match(/^\s*$/))
+	{
+		missing = missing + "\nSub-text";
+	}
+	if(chck)
+	{
+		missing = missing + "\nWhen to post";
+	}
+	if(!chck && rdbt == "future" && golv.match(/^\s*$/))
+	{
+		missing = missing + "\nPost date";
+	}
+	if(missing)
+	{
+		error = "The following fields are required:\n" + missing;
+		alert(error);
+		return false;
+	}
+// 	return true;
+	return false;
 }
 
 

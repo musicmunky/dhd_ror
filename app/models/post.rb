@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
 	belongs_to :user
 	has_many :post_metum
+	mount_uploader :comic, ComicUploader
 
 	def self.get_first
 		Post.where("name != '' and status = 'publish'").order(created_at: :asc).first

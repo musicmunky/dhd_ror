@@ -27,8 +27,34 @@ class PostsController < ApplicationController
 	# POST /posts
 	# POST /posts.json
 	def create
-		@post = Post.new(post_params)
-
+# 		@post = Post.new(post_params)
+		err = 0
+		ntc = ""
+		logger.debug "\n\n\n\n\n\n\n\nFILE IS: #{post_params[:file]}\n\n\n\n\n\n\n\n\n\n\n"
+		begin
+			uploader = ComicUploader.new
+			uploader.store!(post_params[:file])
+			f = post_params[:file]
+#  			logger.debug "FILENAME: #{f.original_filename}"
+			dir = "/var/www/dhd_ror/TEMPIMGDIR/images/"
+			File.rename("#{dir}#{f.original_filename}", "#{dir}#{post_params[:file_name]}")
+		rescue => error
+#			logger.debug "\n\n\n\n\n\n\nPOST IS: #{post_params.to_s}\n\n\n\n\n\n\n"
+			ntc = "There was an error uploading the file: #{error.message}"
+			err = 1
+		ensure
+			if err == 1
+				@post = Post.new
+				respond_to do |format|
+					format.html { render :new, alert: ntc }
+				end
+			else
+				respond_to do |format|
+					format.html { redirect_to new_post_url, notice: 'Post was successfully created!' }
+				end
+			end
+		end
+=begin
 		respond_to do |format|
 			if @post.save
 				format.html { redirect_to @post, notice: 'Post was successfully created.' }
@@ -38,6 +64,7 @@ class PostsController < ApplicationController
 				format.json { render json: @post.errors, status: :unprocessable_entity }
 			end
 		end
+=end
 	end
 
 	# PATCH/PUT /posts/1
@@ -72,6 +99,6 @@ class PostsController < ApplicationController
 
 	# Never trust parameters from the scary internet, only allow the white list through.
 	def post_params
-		params.require(:post).permit(:author, :create_date_gmt, :update_date_gmt, :title, :content, :name, :status, :live_date, :guid)
+		params.require(:post).permit(:user_id, :file, :file_name, :title, :content, :name, :alttext, :status, :live_date, :guid, :live_time)
 	end
 end

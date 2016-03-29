@@ -14,8 +14,15 @@ class ComicUploader < CarrierWave::Uploader::Base
 	# This is a sensible default for uploaders that are meant to be mounted:
 	def store_dir
 #		"uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-		"app/assets/images/dhdcomics"
+#		"/var/www/dhd_ror/app/assets/images/dhdcomics"
+		"/var/www/dhd_ror/TEMPIMGDIR/images"
 	end
+
+#	def filename(uploaded_file = file)
+#		if uploaded_file.present?
+#			"FILENAME#{model.id}.#{uploaded_file.extension}"
+#		end
+#	end
 
 	# Provide a default URL as a default if there hasn't been a file uploaded:
 	# def default_url

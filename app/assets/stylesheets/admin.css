@@ -15,6 +15,7 @@
  *= require jquery-ui-1.10.4.custom
  *= require bootstrap.min
  *= require jquery.dataTables.min
+ *= require jquery.timepicker
  *= require fusionlib
  *= require dhdadmin
  */

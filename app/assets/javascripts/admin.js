@@ -16,6 +16,7 @@
 //= require jquery-ui-1.10.4.custom
 //= require jquery.turbolinks
 //= require jquery.dataTables.min
+//= require jquery.timepicker
 //= require moment.min
 //= require fusionlib
 //= require bootstrap.min
