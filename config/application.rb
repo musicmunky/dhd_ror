@@ -22,6 +22,10 @@ module DhdRor
 
 #		config.assets.enabled = false
 
+		config.comic_dir = '/var/www/dhd_ror/app/assets/images/dhdcomics/'
+#		config.comic_dir = '/var/www/dhd_ror/TEMPIMGDIR/images/'
+
+
 		# Do not swallow errors in after_commit/after_rollback callbacks.
 		config.active_record.raise_in_transactional_callbacks = true
 		config.beginning_of_week = :sunday

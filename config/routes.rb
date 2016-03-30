@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 	devise_for :users, :controllers => { registrations: "users/registrations", sessions: "users/sessions" }
 
 	resources :post_meta
-	resources :posts
 
 	get '/:id', to: 'pages#index', constraints: { id: /(\?p=)?(\d+)/ }
 
@@ -26,6 +25,12 @@ Rails.application.routes.draw do
 
 	get 'store', to: 'pages#store', as: :store
 	get 'pages/store'
+
+	resources :posts do
+		member do
+			post "checkFileExists"
+		end
+	end
 
 	resources :pages do
 		member do

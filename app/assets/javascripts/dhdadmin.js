@@ -130,8 +130,75 @@ function checkComicForm()
 		alert(error);
 		return false;
 	}
-	return true;
+
+	var filecheck = false;
+	try {
+		filecheck = checkFiles(file, name);
+		console.log("FILECHECK IS: " + filecheck);
+	}
+	catch(err) {
+		console.log("Error while checking if file exists");
+		return false;
+	}
+
+	return filecheck;
 // 	return false;
+}
+
+
+function checkFiles(fl, fn)
+{
+	var upldfile = fl || "";
+	var filename = fn || "";
+	if(FUSION.lib.isBlank(upldfile) || FUSION.lib.isBlank(filename)) {
+		return false;
+	}
+
+	var rez = false;
+
+	$.ajax({
+		type: "POST",
+		beforeSend: function(xhr) {
+			xhr.setRequestHeader("X-CSRF-Token", jQuery('meta[name="csrf-token"]').attr('content'));
+			xhr.setRequestHeader("Accept", "text/html");
+		},
+		async: false,
+		url: "/posts/1/checkFileExists",
+		data: { newfile: upldfile,
+				filenam: filename
+		},
+		success: function(result) {
+			var response = JSON.parse(result);
+			if(response['status'] == "success")
+			{
+				console.log("File does not exist!");
+				rez = true;
+			}
+			else
+			{
+				alert(response['message'])
+			}
+		},
+		error: function(xhr, errtype, errthrown) {
+			switch(errtype) {
+				case "error":
+					FUSION.lib.alert("<p>Error completing request: " + errthrown + "</p>");
+					break;
+				case "abort":
+					FUSION.lib.alert("<p>Call to server aborted: " + errthrown + "</p>");
+					break;
+				case "parsererror":
+					FUSION.lib.alert("<p>Parser error during request: " + errthrown + "</p>");
+					break;
+				case "timeout":
+					FUSION.lib.alert("<p>Call to server timed out - please try again</p>");
+					break;
+				default:
+					FUSION.error.showError("The call to the server failed", "AJAX Error");
+			}
+		}
+	});
+	return rez;
 }
 
 

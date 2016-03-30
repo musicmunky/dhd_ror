@@ -49,10 +49,9 @@ class PagesController < ApplicationController
 		content  = {}
 		status   = ""
 		message  = ""
-		logger.debug "\n\n\n\n\n\n\nID IS: #{uid}\n\n\n\n\n\n\n"
+# 		logger.debug "\n\n\n\n\n\n\nID IS: #{uid}\n\n\n\n\n\n\n"
 
 		begin
-#=begin
 			@admn = User.find(adm)
 			if !@admn.has_role? :admin
 				msg = "INSUFFICIENT PRIVILEGES ERROR"
@@ -78,7 +77,6 @@ class PagesController < ApplicationController
 			respond_to do |format|
 				format.html { render :json => response.to_json }
 			end
-#=end
 		end
 
 	end
