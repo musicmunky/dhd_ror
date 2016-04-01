@@ -86,9 +86,11 @@ class PostsController < ApplicationController
 
 			@post.save!
 
-			@post.update_attribute(:guid, "#{root_url}#{@post.id}")
-			@post.update_attribute(:create_date_gmt, @post.created_at)
-			@post.update_attribute(:update_date_gmt, @post.updated_at)
+			Post.update(@post.id, guid: "#{root_url}#{@post.id}", create_date_gmt: @post.created_at, update_date_gmt: @post.updated_at)
+
+# 			@post.update_attribute(:guid, "#{root_url}#{@post.id}")
+# 			@post.update_attribute(:create_date_gmt, @post.created_at)
+# 			@post.update_attribute(:update_date_gmt, @post.updated_at)
 
 			@com_desc = PostMetum.new({meta_key: "comic_description", value: post_params[:alttext], post_id: @post.id})
 			@com_file = PostMetum.new({meta_key: "comic_file", value: fname2, post_id: @post.id})
@@ -131,10 +133,31 @@ class PostsController < ApplicationController
 	# DELETE /posts/1
 	# DELETE /posts/1.json
 	def destroy
-		@post.destroy
-		respond_to do |format|
-			format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
-			format.json { head :no_content }
+		err = 0
+		ntc = ""
+		begin
+			id = @post.id
+			mt = @post.get_post_meta
+
+			dir = Rails.application.config.comic_dir
+			File.delete("#{dir}#{mt['comic_file']}") if File.exist?("#{dir}#{mt['comic_file']}")
+
+			PostMetum.destroy_all("post_id = #{id}")
+			@post.destroy
+		rescue => error
+			ntc = "There was an error deleting the post: #{error.message}"
+			err = 1
+		ensure
+			if err == 1
+				respond_to do |format|
+					format.html { redirect_to posts_url, alert: ntc }
+				end
+			else
+				respond_to do |format|
+					format.html { redirect_to posts_url, notice: 'Post was successfully deleted!' }
+					format.json { head :no_content }
+				end
+			end
 		end
 	end
 

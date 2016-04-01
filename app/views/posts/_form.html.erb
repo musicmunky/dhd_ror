@@ -11,6 +11,7 @@
 			</ul>
 		</div>
 	<% end %>
+	<% @meta = @post.get_post_meta %>
 
 	<input type="hidden" id="post_user_id" name="post[user_id]" value="<%= current_user.id %>" />
 	<input type="hidden" id="post_name" name="post[name]" value="<%= @post.name %>" />
@@ -20,7 +21,7 @@
 	</div>
 	<div class="field w100fl">
 		<%= f.label "Filename" do %>Filename <span style="color:#B00;font-style:italic;margin-left:5px;">(You must include the file extension!)</span><% end %><br>
-		<%= text_field :name, :file_name, { class: "txt100", style: "", id: "post_file_name", name: "post[file_name]" } %>
+		<%= text_field :name, :file_name, { class: "txt100", style: "", id: "post_file_name", name: "post[file_name]", value: @meta['comic_file'] } %>
 	</div>
 	<div class="field w100fl">
 		<%= f.label :title %><br>
@@ -28,7 +29,7 @@
 	</div>
 	<div class="field w100fl">
 		<%= f.label "Alt-Text" %><br>
-		<%= text_field :name, :alttext, { class: "txt100", style: "", id: "post_alttext", name: "post[alttext]" } %>
+		<%= text_field :name, :alttext, { class: "txt100", style: "", id: "post_alttext", name: "post[alttext]", value: @meta['comic_description'] } %>
 	</div>
 	<div class="field w100fl">
 		<%= f.label "Sub-Text" %><br>
@@ -36,15 +37,17 @@
 	</div>
 	<div class="field w50fl" style="padding-right:10px;">
 		<%= f.label :live_date %><br>
-		<%= f.text_field :live_date, { class: "txt100", style: "" } %>
+		<% ldate = @post.id.nil? ? Time.now.strftime("%m/%d/%Y") : @post.created_at.strftime("%m/%d/%Y") %>
+		<%= f.text_field :live_date, { class: "txt100", style: "", value: ldate } %>
 	</div>
 	<div class="field w50fl" style="padding-left:10px;">
 		<%= f.label :live_date do %>Time <span style="color:#B00;font-style:italic;margin-left:5px;">(Defaults to 00:00:00)</span><% end %><br>
-		<%= text_field :name, :live_time, { class: "txt100", style: "", id: "post_live_time", name: "post[live_time]", value: "00:00:00" } %>
+		<% ltime = @post.id.nil? ? "00:00:00" : @post.created_at.strftime("%H/%I/%S") %>
+		<%= text_field :name, :live_time, { class: "txt100", style: "", id: "post_live_time", name: "post[live_time]", value: ltime } %>
 	</div>
 	<div class="field w100fl" style="margin-bottom:50px;">
-		<% chk1 = @post.status.nil? || @post.status == "active" ? "checked" : "" %>
-		<% chk2 = !@post.status.nil? && @post.status == "inactive" ? "checked" : "" %>
+		<% chk1 = @post.status.nil? || @post.status == "publish" ? "checked" : "" %>
+		<% chk2 = !@post.status.nil? && @post.status == "pending" ? "checked" : "" %>
 		<%= f.label "Comic Status" %><br>
 		<%= radio_button "post", "status", "active", { style: "display:block;float:left;margin-top:5px;margin-right:3px", checked: chk1 } %>
 		<%= f.label "Active", { style:"float:left;" } %>

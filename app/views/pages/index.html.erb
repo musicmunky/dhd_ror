@@ -1,5 +1,8 @@
 <%- title "DOGHOUSE | #{@comic.title.html_safe}" %>
 
+<!-- FACEBOOK OPEN GRAPH META PROPERTIES -->
+<meta property="og:image" content='<%= "#{root_url}#{@meta['comic_file']}" %>' />
+
 <div id="maincontent" class="comic">
 	<% annc = Announcement.where(active: true) %>
 	<% if annc.size > 0 %>

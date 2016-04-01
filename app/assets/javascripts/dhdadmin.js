@@ -15,7 +15,7 @@ jQuery( document ).ready(function() {
 	});
 
 	var cmc_coldefs = [{ "targets": [ 4 ], "visible": false, "searchable": true },
-					   { "targets": [ 7 ], "searchable": false, "orderable": false }];
+					   { "targets": [ 7, 8 ], "searchable": false, "orderable": false }];
 
 	$('#post_table').DataTable({
 		"order": [[ 0, "desc" ]],
@@ -23,9 +23,10 @@ jQuery( document ).ready(function() {
 		"columnDefs": cmc_coldefs
 	});
 
-	$( "#post_live_date" ).datepicker({
+	$( "#post_live_date" ).datepicker({});
+/*	$( "#post_live_date" ).datepicker({
 		minDate: 0,
-		maxDate: "+1M"}).datepicker('setDate', '+0d');
+		maxDate: "+1M"});*/
 
 	$('#post_live_time').timepicker({ 'timeFormat': 'H:i:s' });
 
@@ -80,8 +81,8 @@ function checkComicForm()
 	var calt = FUSION.get.node("post_alttext").value;
 	var csub = FUSION.get.node("post_content").value;
 	var golv = FUSION.get.node("post_live_time").value;
-	var rdio = document.getElementsByName("post[status]");
 	var pnam = FUSION.get.node("post_name").value;
+	var rdio = Fusion.get.byName("post[status]");
 
 	var chck = true;
 	var rdbt = "";
@@ -96,23 +97,23 @@ function checkComicForm()
 
 	var error = "";
 	var missing = "";
-	if(file.match(/^\s*$/))
+	if(FUSION.lib.isBlank(file))
 	{
 		missing = missing + "\nFile";
 	}
-	if(name.match(/^\s*$/))
+	if(FUSION.lib.isBlank(name))
 	{
 		missing = missing + "\nFile name";
 	}
-	if(cttl.match(/^\s*$/))
+	if(FUSION.lib.isBlank(cttl))
 	{
 		missing = missing + "\nComic Title";
 	}
-	if(calt.match(/^\s*$/))
+	if(FUSION.lib.isBlank(calt))
 	{
 		missing = missing + "\nAlt-text";
 	}
-	if(csub.match(/^\s*$/))
+	if(FUSION.lib.isBlank(csub))
 	{
 		missing = missing + "\nSub-text";
 	}
@@ -120,7 +121,7 @@ function checkComicForm()
 	{
 		missing = missing + "\nWhen to post";
 	}
-	if(!chck && rdbt == "future" && golv.match(/^\s*$/))
+	if(!chck && rdbt == "future" && FUSION.lib.isBlank(golv))
 	{
 		missing = missing + "\nPost date";
 	}
@@ -142,7 +143,6 @@ function checkComicForm()
 	}
 
 	return filecheck;
-// 	return false;
 }
 
 

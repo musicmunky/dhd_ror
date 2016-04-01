@@ -66,7 +66,7 @@ class Post < ActiveRecord::Base
 		@year = y
 		@comics = []
 		@result = Post.find_by_sql(["SELECT id, created_at, title, guid FROM posts
-									WHERE created_at like '?%' AND name != '' ORDER BY created_at DESC;", @year])
+									WHERE created_at like '?%' AND name != '' ORDER BY created_at DESC;", @year.to_i])
 		if @result.length > 0
 			@result.each do |r|
 				@comics.push(r)
@@ -104,7 +104,9 @@ class Post < ActiveRecord::Base
 		end
 
 		if comicmeta['comic_description'].nil? or comicmeta['comic_description'].blank?
-			comicmeta['comic_description'] = self.title
+			if !self.title.nil?
+				comicmeta['comic_description'] = self.title
+			end
 		end
 
 		return comicmeta

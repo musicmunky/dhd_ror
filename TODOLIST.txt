@@ -2,14 +2,14 @@ TODO LIST:
 
 Finish Admin functionality:
 	Managing Comics (uploads, changing info, etc)
-		Uploading / Creating new comics
+X		Uploading / Creating new comics
 		File management
 		Editing existing comics
 		Setting "go live" dates and changing queries to sort by "live" first
 
-#	Managing Announcements
-#		Editing existing announcements
-#		Adding new announcements
+X	Managing Announcements
+X		Editing existing announcements
+X		Adding new announcements
 
 #	Fix routing to handle user sign outs (redirects to index page, probably due to 'catch all' route at bottom)
 
