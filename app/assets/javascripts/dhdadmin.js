@@ -75,6 +75,7 @@ function disableUserResponse(h)
 
 function checkComicForm()
 {
+	var nore = FUSION.get.node("new_or_edit").value;
 	var file = FUSION.get.node("post_file").value;
 	var name = FUSION.get.node("post_file_name").value;
 	var cttl = FUSION.get.node("post_title").value;
@@ -97,7 +98,7 @@ function checkComicForm()
 
 	var error = "";
 	var missing = "";
-	if(FUSION.lib.isBlank(file))
+	if(nore == "new" && FUSION.lib.isBlank(file))
 	{
 		missing = missing + "\nFile";
 	}

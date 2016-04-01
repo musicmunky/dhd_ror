@@ -88,10 +88,6 @@ class PostsController < ApplicationController
 
 			Post.update(@post.id, guid: "#{root_url}#{@post.id}", create_date_gmt: @post.created_at, update_date_gmt: @post.updated_at)
 
-# 			@post.update_attribute(:guid, "#{root_url}#{@post.id}")
-# 			@post.update_attribute(:create_date_gmt, @post.created_at)
-# 			@post.update_attribute(:update_date_gmt, @post.updated_at)
-
 			@com_desc = PostMetum.new({meta_key: "comic_description", value: post_params[:alttext], post_id: @post.id})
 			@com_file = PostMetum.new({meta_key: "comic_file", value: fname2, post_id: @post.id})
 
@@ -137,10 +133,11 @@ class PostsController < ApplicationController
 		ntc = ""
 		begin
 			id = @post.id
+			tt = @post.title
 			mt = @post.get_post_meta
 
-			dir = Rails.application.config.comic_dir
-			File.delete("#{dir}#{mt['comic_file']}") if File.exist?("#{dir}#{mt['comic_file']}")
+			fpath = "#{Rails.application.config.comic_dir}#{mt['comic_file']}"
+			File.delete("#{fpath}") if File.exist?("#{fpath}")
 
 			PostMetum.destroy_all("post_id = #{id}")
 			@post.destroy
@@ -154,7 +151,7 @@ class PostsController < ApplicationController
 				end
 			else
 				respond_to do |format|
-					format.html { redirect_to posts_url, notice: 'Post was successfully deleted!' }
+					format.html { redirect_to posts_url, notice: "Post '#{tt}' was successfully deleted!" }
 					format.json { head :no_content }
 				end
 			end

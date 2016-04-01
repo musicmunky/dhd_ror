@@ -15,6 +15,7 @@
 
 	<input type="hidden" id="post_user_id" name="post[user_id]" value="<%= current_user.id %>" />
 	<input type="hidden" id="post_name" name="post[name]" value="<%= @post.name %>" />
+	<input type="hidden" id="new_or_edit" name="new_or_edit" value="<%= new_or_edit %>" />
 	<div class="field w100fl">
 		<%= f.label "File" %><br>
 		<%= file_field :post, :file, { class: "txt100", style: "", id: "post_file", name: "post[file]", accept: 'image/png,image/gif,image/jpeg' } %>
